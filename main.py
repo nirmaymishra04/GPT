@@ -23,7 +23,7 @@ image_path = "jungle.jpg"
 # Convert image to Base64
 base64_image = get_base64_image(image_path)
 
-# Inject CSS with Base64 image
+# back
 st.markdown(f"""
     <style>
     .stApp {{
@@ -40,7 +40,7 @@ config_data = json.load(open(f"{working_dir}/config.json"))
 
 GROQ_API_KEY = config_data["GROQ_API_KEY"]
 
-# Save the API key to environment variable
+# API Key inntegration
 os.environ["GROQ_API_KEY"] = GROQ_API_KEY
 
 client = Groq()
@@ -64,25 +64,25 @@ if st.sidebar.button("➕ New Chat"):
 
 st.session_state.current_chat = selected_chat
 
-# Streamlit page title
+#  page title
 st.title("👨‍⚕️ Ayurveda GPT 2.O")
 st.subheader("KRITIKA, RAJESH, AAKASH, RAJESH")
 st.sidebar.success("Select a page above.")
 
-# Display chat history for the selected session
+#chat history display 
 chat_history = st.session_state.chat_sessions[st.session_state.current_chat]
 for message in chat_history:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
 # Input field for user's message:
-user_prompt = st.chat_input("HOW CAN I HELP YOU 🥱 ...")
+user_prompt = st.chat_input("HOW CAN I HELP YOU 😊 ...")
 
 if user_prompt:
     st.chat_message("user").markdown(user_prompt)
     chat_history.append({"role": "user", "content": user_prompt})
 
-    # Send user's message to the LLM and get a response
+    # user will send message to llm to get a repsonse
     messages = [
         {"role": "system", "content": "You are a medical guide in Ayurveda "},
         *chat_history
@@ -96,6 +96,6 @@ if user_prompt:
     assistant_response = response.choices[0].message.content
     chat_history.append({"role": "assistant", "content": assistant_response})
 
-    # Display the LLM's response
+    # Display of LLM's response
     with st.chat_message("assistant"):
         st.markdown(assistant_response)
