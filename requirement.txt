@@ -1,0 +1,6 @@
+groq==0.15.0
+streamlit==1.41.1
+pyttsx3==2.90  # For AI Voice Output (Text-to-Speech)
+matplotlib==3.7.1   # For advanced charts & graphs (optional)
+pandas==2.1.1       # For handling user data (optional)
+requests==2.31.0    # If you want to fetch live job market data (optional)
